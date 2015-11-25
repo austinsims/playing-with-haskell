@@ -1,3 +1,5 @@
+import System.IO
+
 data Attribute = Attribute {
     name :: String,
     value :: String
@@ -17,7 +19,7 @@ instance Show Node where
     ++ (concat $ map show $ attributes)
     ++ ">"
     ++ (concat $ map show $ children)
-    ++ "</" -- TODO: innerText
+    ++ "</"
     ++ tagName
     ++ ">"
   show (TextNode innerText) = innerText
@@ -47,3 +49,6 @@ body = Element {
     attributes = [],
     children = [para]
   }
+
+main = do
+  putStrLn $ show body
